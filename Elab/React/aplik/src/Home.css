@@ -1,0 +1,55 @@
+.full-screen {
+	background-image: url("images/pozadinazahome.png");
+	background-size: cover;
+	
+	
+	background-size: 100% 100%;
+
+
+display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 100px;
+	background-attachment: fixed;
+
+  }
+
+  h1{
+    text-align: center;
+    color: #EF6D3D;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+	user-select: none;
+  }
+	.title-containers{
+		
+		left: 50%;
+		text-align: center;
+
+	}
+  h2{
+	color:#EF6D3D;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	user-select: none;
+	font-family: 'Trebuchet MS', sans-serif;
+
+		
+
+  }
+
+  .container{
+	
+	
+	font-size: 30px;
+	text-align: center;
+	overflow: hidden; 
+  }
+  .container-img {
+	
+	border-radius: 50%; 
+    width: 500px;
+	height: 500px;
+	object-fit: contain;
+  }

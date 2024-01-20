@@ -1,0 +1,27 @@
+.cart-all{
+    display: flow-root;
+     padding-left: 38%;
+ }
+ .card-cart{
+     align-items: center;
+     background-color: aliceblue;
+     border-style: solid;
+     border-width: 2px;
+     border-color: rgb(211, 211, 211);
+     border-radius: 10px;
+     width: 300px; 
+     margin-right: 16px;
+     margin-bottom: 16px;
+     text-align: center;
+ }
+ 
+ .footer{
+     display: flex;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+ }
+ .h1{
+    text-align: center;
+color: #000000;
+ }
