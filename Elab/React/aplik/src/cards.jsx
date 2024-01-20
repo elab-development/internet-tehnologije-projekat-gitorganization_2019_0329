@@ -17,9 +17,9 @@ const Card = () => {
   };
 
   const cards = [
-    { id: 1, imageSrc: Images.mleko, title: 'du lait', soundSrc: 'putanja/do/zvuka1.mp3' },
-    { id: 2, imageSrc: Images.casa, title: 'un verre', soundSrc: 'putanja/do/zvuka2.mp3' },
-    { id: 3, imageSrc: Images.kasika, title: 'la cuillère', soundSrc: 'putanja/do/zvuka3.mp3' },
+    { id: 1, imageSrc: Images.mleko, title: 'du lait'},
+    { id: 2, imageSrc: Images.casa, title: 'un verre' },
+    { id: 3, imageSrc: Images.kasika, title: 'la cuillère' },
   ];
 
   return (
