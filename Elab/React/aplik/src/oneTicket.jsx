@@ -5,12 +5,12 @@ import { MinusOutlined } from "@ant-design/icons";
 const OneTicket = ({ ticket, onAdd, onRemove }) => {
   return (
     <div className="card">
-      <img
-        className="card-image-top"
-        src={ticket.img}
-        height="150"
-        width="200"
-      ></img>
+     
+     
+     
+     
+     
+     
       <div className="card-body">
         <h3 className="card-title">{ticket.title}</h3>
         <p className="card-text">{ticket.description}</p>
