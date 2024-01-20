@@ -11,7 +11,7 @@ const Cart = ({ cartProducts, onAdd, onRemove }) => {
 
   return (
     <div className="cart-container">
-  
+      <h1>Ovo je vaša korpa</h1>
       <div className="cart-all">
         {cartProducts.map((ticket) => (
           <OneTicket
