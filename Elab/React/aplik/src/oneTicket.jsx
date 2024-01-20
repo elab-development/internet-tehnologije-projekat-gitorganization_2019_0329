@@ -6,7 +6,12 @@ const OneTicket = ({ ticket, onAdd, onRemove }) => {
   return (
     <div className="card">
      
-     
+     <img
+   className="card-image-top"
+   src={ticket.img}
+   height="150"
+   width="200"
+ ></img>
      
      
      
