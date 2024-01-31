@@ -6,6 +6,7 @@
     margin: 50px;
   }
   .odgovori{
+    user-select: none;
     margin-top: 10px;  
     font-family: "Arial", sans-serif; 
     text-align: justify;
@@ -16,6 +17,7 @@
     width: 200px; 
     height: 200px; 
   }.pitanja{
+    user-select: none;
     margin-top: 10px; 
     font-family: "Arial", sans-serif; 
     text-align: justify;
@@ -31,6 +33,7 @@
     margin: 10px;
   }
   .naslov-card h4{
+    user-select: none;
     text-align: CENTER;
     color: #EF6D3D;
     margin-top: 30px;
