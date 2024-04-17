@@ -18,7 +18,7 @@ function Search({ details }) {
   }
 
   return (
-    <section className="h1">
+    <section className="user-data">
       <h1>Pronađi svoj kurs</h1>
       <div className="card-cart{">
         <h3 className="h1" style={{ marginLeft: 10 }}>

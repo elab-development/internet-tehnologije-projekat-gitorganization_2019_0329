@@ -33,9 +33,9 @@ const Card = () => {
           <OneCard key={card.id} imageSrc={card.imageSrc} soundSrc={card.soundSrc} title={card.title} />
         ))}
       </div>
-      <div className="card-container">
+      <div className="user-data">
         <input type="text" value={userAnswer} onChange={handleInputChange} placeholder="Unesite odgovor" />
-        <button onClick={handleConfirm}>Potvrdi</button>
+        <button className="prijavi-se-btn" onClick={handleConfirm}>Potvrdi</button>
       </div>
     </>
   );
