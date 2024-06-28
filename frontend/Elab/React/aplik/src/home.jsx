@@ -136,6 +136,36 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
       });
   }
 
+  // State za resetovanje lozinke
+  const [email, setEmail] = useState('');
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const resetPassword = () => {
+    if (!email) {
+      alert("Please enter your email address.");
+      return;
+    }
+
+    let config = {
+      method: 'post',
+      url: 'api/reset-password',
+      data: {
+        email: email
+      }
+    };
+
+    axios.request(config)
+      .then((response) => {
+        alert("An email with instructions has been sent to your email address.");
+      })
+      .catch((error) => {
+        alert("Failed to send reset password email. Please try again later.");
+      });
+  };
+
   return (
     <div>
       {window.sessionStorage.getItem("auth_token") === null ? (
@@ -156,6 +186,12 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
             <MyButton label={"Update member"} disabled={false} onClick={updateMember}></MyButton>
             <MyButton label={"Delete member"} disabled={false} onClick={deleteMember}></MyButton>
           </div>
+
+          <div>
+            <h2>Forgot Password?</h2>
+            <input type="email" value={email} onChange={handleEmailChange} placeholder="Enter your email" />
+            <MyButton label={"Reset Password"} onClick={resetPassword}></MyButton>
+          </div>
         </div>
       )}
     </div>
@@ -163,3 +199,10 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
 };
 
 export default AuthenticationAndRandomData;
+
+
+
+
+
+
+
