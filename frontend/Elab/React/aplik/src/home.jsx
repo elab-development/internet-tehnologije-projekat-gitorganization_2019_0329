@@ -4,8 +4,21 @@ import { useNavigate } from 'react-router-dom';
 import Login from './Login';
 import MyButton from "@ant-design/icons";
 
-const AuthenticationAndRandomData = ({ addToken, token }) => {
+const AuthenticationAndRandomData = () => {
+  const [token, setToken] = useState(null);
   let navigate = useNavigate();
+
+  useEffect(() => {
+    const storedToken = window.sessionStorage.getItem("auth_token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
+
+  const handleLoginSuccess = () => {
+    const storedToken = window.sessionStorage.getItem("auth_token");
+    setToken(storedToken);
+  };
 
   function handleLogout() {
     let myUrl = window.sessionStorage.getItem("role") === "admin" ? "api/admin/logout" : "api/logout";
@@ -19,10 +32,10 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
     };
 
     axios.request(config)
-      .then((response) => {
-        window.sessionStorage.setItem("auth_token", null);
-        window.sessionStorage.removeItem("role");
+      .then(() => {
         window.sessionStorage.removeItem("auth_token");
+        window.sessionStorage.removeItem("role");
+        setToken(null);
         navigate("/");
       })
       .catch((error) => {
@@ -65,9 +78,11 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
   });
 
   function handleInput(e) {
-    let newMemberData = memberData;
-    newMemberData[e.target.name] = e.target.value;
-    setMemberData(newMemberData);
+    const { name, value } = e.target;
+    setMemberData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
   }
 
   function deleteMember() {
@@ -80,10 +95,10 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
     };
 
     axios.request(config)
-      .then((response) => {
+      .then(() => {
         alert("Successfully deleted member!");
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Error while deleting member");
       });
   }
@@ -104,10 +119,10 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
     };
 
     axios.request(config)
-      .then((response) => {
+      .then(() => {
         alert("Successfully updated member!");
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Error while updating member");
       });
   }
@@ -128,10 +143,10 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
     };
 
     axios.request(config)
-      .then((response) => {
+      .then(() => {
         alert("Successfully inserted member!");
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Error while inserting member");
       });
   }
@@ -158,18 +173,18 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
     };
 
     axios.request(config)
-      .then((response) => {
+      .then(() => {
         alert("An email with instructions has been sent to your email address.");
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Failed to send reset password email. Please try again later.");
       });
   };
 
   return (
     <div>
-      {window.sessionStorage.getItem("auth_token") === null ? (
-        <Login addToken={addToken} />
+      {token === null ? (
+        <Login onLoginSuccess={handleLoginSuccess} />
       ) : (
         <div>
           <p>Random question: <span dangerouslySetInnerHTML={{ __html: randomQuestion }} /></p>
@@ -199,10 +214,3 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
 };
 
 export default AuthenticationAndRandomData;
-
-
-
-
-
-
-

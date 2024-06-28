@@ -11,6 +11,7 @@ import RegisterForm from "./register";
 import Cart from "./cart";
 import Images from "./imagesPacked";
 import OneCard from "./OneCard";
+import RegisterAdmin from "./registeradmin";
 
 
 function App() {
@@ -111,7 +112,7 @@ function App() {
 
 />
 <Route path="/register" element={<RegisterForm />} />
-
+<Route path="/admin" element={<RegisterAdmin />} />
 <Route path="/cards" element={<Card />} />
 <Route path="/Search" element={<Search details={tickets} />} />
       </Routes>

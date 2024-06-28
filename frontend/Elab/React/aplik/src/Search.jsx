@@ -18,16 +18,12 @@ function Search({ details }) {
   }
 
   return (
-    <section className="user-data">
+    <section className="search-container">
       <h1>Pronađi svoj kurs</h1>
-      <div className="card-cart{">
-        <h3 className="h1" style={{ marginLeft: 10 }}>
-         Pretraži ovde
-        </h3>
-      </div>
-      <div className="h1" style={{ marginLeft: 10 }}>
+      <div className="search-input-container">
+     
         <input
-          className="pa3"
+          className="search-input"
           type="search"
           placeholder="Pretraži ovde"
           onChange={handleChange}

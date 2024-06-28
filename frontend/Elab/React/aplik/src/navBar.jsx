@@ -30,6 +30,11 @@ function NavBar() {
             </Link>
           </li>
           <li>
+  
+  
+  
+ </li>
+          <li>
             <Link to="/cart" onClick={toggle}>
               Korpa
             </Link>

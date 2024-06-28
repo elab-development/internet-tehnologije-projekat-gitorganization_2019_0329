@@ -1,113 +1,84 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 
-const RegisterForm = ({ onBack }) => {
-  const [memberId, setMemberId] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+const Register = () => {
+  const [userData, setUserData] = useState({
+    ime: '',
+    prezime: '',
+    lozinka: ''
+  });
+  const navigate = useNavigate();
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setUserData({
+      ...userData,
+      [name]: value
+    });
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
 
-    const memberData = {
-      memberId,
-      firstName,
-      lastName,
+    const registerData = {
+      ime: userData.ime,
+      prezime: userData.prezime,
+      lozinka: userData.lozinka,
     };
 
-    axios.post('/api/members', memberData)
+    axios.post('/api/register', registerData)
       .then(response => {
-        console.log('Member registered successfully:', response.data);
-        // Handle success actions, e.g., clearing the form, showing a success message, etc.
+        console.log('Korisnik uspešno registrovan:', response.data);
+        navigate('/');
       })
       .catch(error => {
-        console.error('Error during member registration:', error);
-        // Handle error actions, e.g., showing an error message, etc.
-      });
-  };
-
-  const handleUpdateMember = (e) => {
-    e.preventDefault();
-
-    const memberData = {
-      firstName,
-      lastName,
-    };
-
-    axios.put(`/api/members/${memberId}`, memberData)
-      .then(response => {
-        console.log('Member updated successfully:', response.data);
-        // Handle success actions, e.g., showing a success message, etc.
-      })
-      .catch(error => {
-        console.error('Error during member update:', error);
-        // Handle error actions, e.g., showing an error message, etc.
-      });
-  };
-
-  const handleDeleteMember = (e) => {
-    e.preventDefault();
-
-    axios.delete(`/api/members/${memberId}`)
-      .then(response => {
-        console.log('Member deleted successfully:', response.data);
-        // Handle success actions, e.g., clearing the form, showing a success message, etc.
-      })
-      .catch(error => {
-        console.error('Error during member deletion:', error);
-        // Handle error actions, e.g., showing an error message, etc.
+        console.error('Greška tokom registracije:', error);
       });
   };
 
   return (
     <div className="login-container">
-      <h2 className="login-title">Register</h2>
+      <h2 className="login-title">Registracija</h2>
       <form onSubmit={handleRegister}>
         <div className="login-content">
           <div className="form-group">
-            <label htmlFor="memberId">Member ID:</label>
+            <label htmlFor="ime">Ime:</label>
             <input
               type="text"
-              id="memberId"
+              id="ime"
+              name="ime"
               className="login-input"
-              value={memberId}
-              onChange={(e) => setMemberId(e.target.value)}
+              value={userData.ime}
+              onChange={handleInput}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="firstName">First Name:</label>
+            <label htmlFor="prezime">Prezime:</label>
             <input
               type="text"
-              id="firstName"
+              id="prezime"
+              name="prezime"
               className="login-input"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={userData.prezime}
+              onChange={handleInput}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="lastName">Last Name:</label>
+            <label htmlFor="lozinka">Lozinka:</label>
             <input
-              type="text"
-              id="lastName"
+              type="password"
+              id="lozinka"
+              name="lozinka"
               className="login-input"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={userData.lozinka}
+              onChange={handleInput}
             />
           </div>
           <div className="button-container">
-            <button type="submit" className="login-button">
-              Insert Member
-            </button>
-            <button type="button" className="signin-button" onClick={handleUpdateMember}>
-              Update Member
-            </button>
-            <button type="button" className="signin-button" onClick={handleDeleteMember}>
-              Delete Member
-            </button>
-            <button type="button" className="signin-button" onClick={onBack}>
-              Back to Login
-            </button>
+            <button type="submit" className="login-button">Registruj se</button>
+            <Link to="/" className="signin-button">Nazad na prijavu</Link>
           </div>
         </div>
       </form>
@@ -115,4 +86,4 @@ const RegisterForm = ({ onBack }) => {
   );
 };
 
-export default RegisterForm;
+export default Register;
