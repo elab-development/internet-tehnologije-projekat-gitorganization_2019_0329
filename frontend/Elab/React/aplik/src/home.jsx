@@ -70,6 +70,15 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
     setMemberData(newMemberData);
   }
 
+  function deleteMember() {
+    let config = {
+      method: 'delete',
+      url: 'api/members/' + memberData.id + '/delete',
+      headers: {
+        Authorization: "Bearer " + window.sessionStorage.getItem("auth_token"),
+      }
+    };
+
     axios.request(config)
       .then((response) => {
         alert("Successfully deleted member!");
@@ -145,12 +154,12 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
             <input type="text" name="last_name" placeholder="Last Name" onChange={handleInput} />
             <MyButton label={"Insert member"} disabled={false} onClick={insertMember}></MyButton>
             <MyButton label={"Update member"} disabled={false} onClick={updateMember}></MyButton>
-      
+            <MyButton label={"Delete member"} disabled={false} onClick={deleteMember}></MyButton>
           </div>
         </div>
       )}
     </div>
   );
-;
+};
 
 export default AuthenticationAndRandomData;
