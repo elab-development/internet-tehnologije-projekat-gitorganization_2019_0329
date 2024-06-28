@@ -103,14 +103,13 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
       data: data
     };
 
-    axios.request(config)
-      .then((response) => {
-        alert("Successfully updated member!");
-      })
-      .catch((error) => {
-        alert("Error while updating member");
-      });
-  }
+
+
+
+
+
+
+
 
   function insertMember() {
     let data = JSON.stringify({
@@ -161,5 +160,5 @@ const AuthenticationAndRandomData = ({ addToken, token }) => {
     </div>
   );
 };
-
+}
 export default AuthenticationAndRandomData;
