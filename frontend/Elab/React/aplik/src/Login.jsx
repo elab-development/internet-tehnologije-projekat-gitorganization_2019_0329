@@ -8,6 +8,9 @@ const Login = ({ onLoginSuccess }) => {
     usernameEmail: '',
     password: ''
   });
+  const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [resetMessage, setResetMessage] = useState('');
   const navigate = useNavigate();
 
   const handleInput = (e) => {
@@ -16,6 +19,10 @@ const Login = ({ onLoginSuccess }) => {
       ...userData,
       [name]: value
     });
+  };
+
+  const handleForgotPasswordInput = (e) => {
+    setForgotPasswordEmail(e.target.value);
   };
 
   const handleLogin = (e) => {
@@ -29,14 +36,29 @@ const Login = ({ onLoginSuccess }) => {
     axios.post('/api/login', loginData)
       .then(response => {
         const token = response.data.token;
-        const role = response.data.role; // Sačuvajte ulogu korisnika
+        const role = response.data.role;
         window.sessionStorage.setItem("auth_token", token);
-        window.sessionStorage.setItem("role", role); // Sačuvajte ulogu korisnika
+        window.sessionStorage.setItem("role", role);
         onLoginSuccess();
         navigate('/cards');
       })
       .catch(error => {
+        setErrorMessage('Pogrešan email ili lozinka');
         console.error('Greška tokom prijave:', error);
+      });
+  };
+
+  const handleForgotPassword = (e) => {
+    e.preventDefault();
+
+    axios.post('/api/forgot-password', { email: forgotPasswordEmail })
+      .then(response => {
+        setResetMessage('Proverite vaš email za dalje instrukcije');
+        setErrorMessage('');
+      })
+      .catch(error => {
+        setErrorMessage('Došlo je do greške, pokušajte ponovo');
+        console.error('Greška tokom resetovanja lozinke:', error);
       });
   };
 
@@ -69,12 +91,32 @@ const Login = ({ onLoginSuccess }) => {
               onChange={handleInput}
             />
           </div>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="button-container">
             <button type="submit" className="login-button">Prijavi se</button>
             <Link to="/register" className="signin-button">Registruj se</Link>
           </div>
         </div>
       </form>
+      <div className="forgot-password-container">
+        <h3 className="forgot-password-title">Zaboravili ste lozinku?</h3>
+        <p className="forgot-password-instructions">Ukucajte vaš email za promenu lozinke</p>
+        <form onSubmit={handleForgotPassword}>
+          <div className="form-group">
+            <input
+              type="email"
+              id="forgotPasswordEmail"
+              name="forgotPasswordEmail"
+              placeholder="Unesite vaš email"
+              className="login-input"
+              value={forgotPasswordEmail}
+              onChange={handleForgotPasswordInput}
+            />
+          </div>
+          <button type="submit" className="login-button">Resetujte lozinku</button>
+        </form>
+        {resetMessage && <p className="reset-message">{resetMessage}</p>}
+      </div>
     </div>
   );
 }

@@ -1,85 +1,92 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 
 const RegisterAdmin = () => {
-  const [memberId, setMemberId] = useState("");
+  const [userId, setUserId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const navigate = useNavigate();
 
-  const handleInsertMember = (e) => {
+  const handleInsertUser = (e) => {
     e.preventDefault();
 
-    const memberData = {
-      memberId,
+    const userData = {
+      userId,
       firstName,
       lastName,
     };
 
-    axios.post('/api/members', memberData, {
+    axios.post('/api/users', userData, {
       headers: {
         Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`
       }
     })
       .then(response => {
-        console.log('Član uspešno dodat:', response.data);
+        console.log('Korisnik uspešno dodat:', response.data);
       })
       .catch(error => {
-        console.error('Greška tokom dodavanja člana:', error);
+        console.error('Greška tokom dodavanja korisnika:', error);
       });
   };
 
-  const handleUpdateMember = (e) => {
+  const handleUpdateUser = (e) => {
     e.preventDefault();
 
-    const memberData = {
+    const userData = {
       firstName,
       lastName,
     };
 
-    axios.put(`/api/members/${memberId}`, memberData, {
+    axios.put(`/api/users/${userId}`, userData, {
       headers: {
         Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`
       }
     })
       .then(response => {
-        console.log('Član uspešno ažuriran:', response.data);
+        console.log('Korisnik uspešno ažuriran:', response.data);
       })
       .catch(error => {
-        console.error('Greška tokom ažuriranja člana:', error);
+        console.error('Greška tokom ažuriranja korisnika:', error);
       });
   };
 
-  const handleDeleteMember = (e) => {
+  const handleDeleteUser = (e) => {
     e.preventDefault();
 
-    axios.delete(`/api/members/${memberId}`, {
+    axios.delete(`/api/users/${userId}`, {
       headers: {
         Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`
       }
     })
       .then(response => {
-        console.log('Član uspešno obrisan:', response.data);
+        console.log('Korisnik uspešno obrisan:', response.data);
       })
       .catch(error => {
-        console.error('Greška tokom brisanja člana:', error);
+        console.error('Greška tokom brisanja korisnika:', error);
       });
+  };
+
+  const handleLogout = () => {
+    window.sessionStorage.removeItem("auth_token");
+    window.sessionStorage.removeItem("role");
+    navigate("/");
   };
 
   return (
     <div className="login-container">
-      <h2 className="login-title">Upravljanje Članovima</h2>
-      <form onSubmit={handleInsertMember}>
+      <h2 className="login-title">Upravljanje Korisnicima</h2>
+      <form onSubmit={handleInsertUser}>
         <div className="login-content">
           <div className="form-group">
-            <label htmlFor="memberId">ID člana:</label>
+            <label htmlFor="userId">ID korisnika:</label>
             <input
               type="text"
-              id="memberId"
+              id="userId"
               className="login-input"
-              value={memberId}
-              onChange={(e) => setMemberId(e.target.value)}
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -104,13 +111,16 @@ const RegisterAdmin = () => {
           </div>
           <div className="button-container">
             <button type="submit" className="login-button">
-              Dodaj Člana
+              Dodaj Korisnika
             </button>
-            <button type="button" className="signin-button" onClick={handleUpdateMember}>
-              Ažuriraj Člana
+            <button type="button" className="signin-button" onClick={handleUpdateUser}>
+              Ažuriraj Korisnika
             </button>
-            <button type="button" className="signin-button" onClick={handleDeleteMember}>
-              Obriši Člana
+            <button type="button" className="signin-button" onClick={handleDeleteUser}>
+              Obriši Korisnika
+            </button>
+            <button type="button" className="signin-button" onClick={handleLogout}>
+              Logout
             </button>
             <Link to="/" className="signin-button">
               Nazad na Login

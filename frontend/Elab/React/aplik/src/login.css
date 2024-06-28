@@ -34,13 +34,15 @@
 
 .button-container {
   display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .login-button, .signin-button {
-  padding: 15px 30px;
-  margin-right: 20px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
   background-color: #EF6D3D;
   color: white;
   border: none;
@@ -50,5 +52,10 @@
 }
 
 .login-button:hover, .signin-button:hover {
-  background-color: #EF6D3D;
+  background-color: #d85c33;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
