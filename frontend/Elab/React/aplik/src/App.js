@@ -7,7 +7,7 @@ import NavBar from "./navBar";
 import Login from "./Login";
 import Card from "./cards";
 import Search from './Search'
-
+import RegisterForm from "./register";
 import Cart from "./cart";
 import Images from "./imagesPacked";
 import OneCard from "./OneCard";
@@ -110,6 +110,7 @@ function App() {
   }
 
 />
+<Route path="/register" element={<RegisterForm />} />
 
 <Route path="/cards" element={<Card />} />
 <Route path="/Search" element={<Search details={tickets} />} />
