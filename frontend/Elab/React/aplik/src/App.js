@@ -4,7 +4,7 @@ import Home from "./home";
 import Tickets from "./tickets";
 import { useState } from "react";
 import NavBar from "./navBar";
-
+import Login from "./Login";
 import Card from "./cards";
 import Search from './Search'
 
@@ -110,6 +110,7 @@ function App() {
   }
 
 />
+<Route path="/login" element={<Login />} />
 <Route path="/cards" element={<Card />} />
 <Route path="/Search" element={<Search details={tickets} />} />
       </Routes>
