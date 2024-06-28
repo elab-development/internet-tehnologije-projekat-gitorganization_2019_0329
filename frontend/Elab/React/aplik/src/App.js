@@ -110,7 +110,7 @@ function App() {
   }
 
 />
-<Route path="/login" element={<Login />} />
+
 <Route path="/cards" element={<Card />} />
 <Route path="/Search" element={<Search details={tickets} />} />
       </Routes>
