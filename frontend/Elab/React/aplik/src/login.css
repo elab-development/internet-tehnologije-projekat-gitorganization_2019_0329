@@ -1,0 +1,61 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  font-size: 18px;
+}
+
+.login-title {
+  margin-bottom: 20px; /* Dodaje razmak ispod naslova */
+}
+
+.login-content {
+  width: 300px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.password-label {
+  display: block;
+  margin-bottom: 10px; /* Dodaje dodatni razmak ispod etikete "Password" */
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-button, .signin-button {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #EF6D3D;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover, .signin-button:hover {
+  background-color: #d85c33;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}

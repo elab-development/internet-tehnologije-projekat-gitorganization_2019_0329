@@ -77,6 +77,8 @@ const RegisterAdmin = () => {
   return (
     <div className="login-container">
       <h2 className="login-title">Registruj korisnika</h2>
+=======
+      <h2 className="login-title">Upravljanje Korisnicima</h2>
       <form onSubmit={handleInsertUser}>
         <div className="login-content">
           <div className="form-group">
