@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -5,9 +6,9 @@ import "./login.css";
 
 const Register = () => {
   const [userData, setUserData] = useState({
-    ime: '',
-    prezime: '',
-    lozinka: ''
+    name: '',
+    email: '',
+    password: ''
   });
   const navigate = useNavigate();
 
@@ -23,12 +24,12 @@ const Register = () => {
     e.preventDefault();
 
     const registerData = {
-      ime: userData.ime,
-      prezime: userData.prezime,
-      lozinka: userData.lozinka,
+      name: userData.name,
+      email: userData.email,
+      password: userData.password,
     };
 
-    axios.post('/api/register', registerData)
+    axios.post('http://127.0.0.1:8000/api/register', registerData)
       .then(response => {
         console.log('Korisnik uspešno registrovan:', response.data);
         navigate('/');
@@ -44,35 +45,35 @@ const Register = () => {
       <form onSubmit={handleRegister}>
         <div className="login-content">
           <div className="form-group">
-            <label htmlFor="ime">Ime:</label>
+            <label htmlFor="name">Ime:</label>
             <input
               type="text"
-              id="ime"
-              name="ime"
+              id="name"
+              name="name"
               className="login-input"
-              value={userData.ime}
+              value={userData.name}
               onChange={handleInput}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="prezime">Prezime:</label>
+            <label htmlFor="email">Email:</label>
             <input
-              type="text"
-              id="prezime"
-              name="prezime"
+              type="email"
+              id="email"
+              name="email"
               className="login-input"
-              value={userData.prezime}
+              value={userData.email}
               onChange={handleInput}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="lozinka">Lozinka:</label>
+            <label htmlFor="password">Lozinka:</label>
             <input
               type="password"
-              id="lozinka"
-              name="lozinka"
+              id="password"
+              name="password"
               className="login-input"
-              value={userData.lozinka}
+              value={userData.password}
               onChange={handleInput}
             />
           </div>

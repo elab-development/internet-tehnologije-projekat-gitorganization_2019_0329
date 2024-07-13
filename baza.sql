@@ -29,12 +29,12 @@ CREATE TABLE courses (
 
 /*Data for the table `courses` */
 
-INSERT INTO courses (kurs, opis, created_at, updated_at) VALUES
-('Engleski jezik A1', 'Osnovni nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00'),
-('Italijanski jezik A1', 'Osnovni nivo italijanskog jezika', '2024-02-01 12:00:00', '2024-02-01 12:00:00'),
-('Španski jezik', 'Osnovni nivo španskog jezika', '2024-03-01 12:00:00', '2024-03-01 12:00:00'),
-('Engleski jezik B1', 'Srednji nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00'),
-('Engleski jezik C1', 'Napredni nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00'),
+INSERT INTO courses (id, kurs, opis, created_at, updated_at) VALUES
+(22,'Engleski jezik A1', 'Osnovni nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00'),
+(33,'Italijanski jezik A1', 'Osnovni nivo italijanskog jezika', '2024-02-01 12:00:00', '2024-02-01 12:00:00'),
+(44,'Španski jezik', 'Osnovni nivo španskog jezika', '2024-03-01 12:00:00', '2024-03-01 12:00:00'),
+(55,'Engleski jezik B1', 'Srednji nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00'),
+(66,'Engleski jezik C1', 'Napredni nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00');
 
 
 /*Table structure for table `payments` */
@@ -53,11 +53,11 @@ CREATE TABLE payments (
 /*Data for the table `payments` */
 
 INSERT INTO payments (id, cena, user_id, created_at, updated_at, currency) VALUES
-(10000.00, 1, '2024-01-01 12:00:00', '2024-01-01 12:00:00', 'USD'),
-( 12000.00, 2, '2024-02-01 12:00:00', '2024-02-01 12:00:00', 'EUR'),
-( 15000.00, 3, '2024-03-01 12:00:00', '2024-03-01 12:00:00', 'GBP'),
-( 12500.00, 4, '2024-04-01 12:00:00', '2024-04-01 12:00:00', 'USD'),
-(13000.00, 5, '2024-05-01 12:00:00', '2024-05-01 12:00:00', 'EUR');
+(1,10000.00, 4, '2024-01-01 12:00:00', '2024-01-01 12:00:00', 'USD'),
+(2, 12000.00, 5, '2024-02-01 12:00:00', '2024-02-01 12:00:00', 'EUR'),
+(3, 15000.00, 6, '2024-03-01 12:00:00', '2024-03-01 12:00:00', 'GBP'),
+(4, 12500.00, 7, '2024-04-01 12:00:00', '2024-04-01 12:00:00', 'USD'),
+(5,13000.00, 8, '2024-05-01 12:00:00', '2024-05-01 12:00:00', 'EUR');
 
 
 

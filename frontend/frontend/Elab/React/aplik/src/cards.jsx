@@ -3,6 +3,8 @@ import OneCard from './OneCard';
 import './cards.css';
 import Images from './imagesPacked';
 import axios from 'axios';
+import React from 'react';
+
 
 const Card = () => {
   const [userAnswer, setUserAnswer] = useState('');

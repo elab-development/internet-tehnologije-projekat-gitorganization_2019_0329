@@ -1,6 +1,8 @@
 import React from "react";
 import OneTicket from "./oneTicket";
 import "./cart.css";
+import React from 'react';
+
 
 const Cart = ({ cartProducts, onAdd, onRemove }) => {
   const initPrice = 0;

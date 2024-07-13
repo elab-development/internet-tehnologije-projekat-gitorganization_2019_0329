@@ -1,10 +1,10 @@
 import "./App.css";
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./home";
 import Tickets from "./tickets";
 import { useState } from "react";
 import NavBar from "./navBar";
-import LoginForm from "./home";
 import Card from "./cards";
 import Search from './Search'
 import RegisterForm from "./register";
