@@ -53,6 +53,6 @@ Route::get('/users', [UserController::class, 'index'])->name('user.index');//pri
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('forgot/password',[AuthController::class,'forgotPassword']);
+Route::post('forgot/password',[AuthController::class,'forgotPassword']);//
 
 
