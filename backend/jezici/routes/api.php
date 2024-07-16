@@ -28,13 +28,14 @@ Route::group(['middleware' => ['auth:sanctum','role:admin', 'adminLoggedIn']], f
         return $request->user();
     });
 
+    //
     Route::put('/courses/{id}/update', [CourseController::class, 'update']);
     Route::delete('/courses/{id}/delete', [CourseController::class, 'destroy']);
 
     Route::post('/courses/insert', [CourseController::class,'insert']);
 
     Route::post('/admin/logout', [AuthController::class, 'logout']);
-    //
+
 });
 
 
