@@ -30,11 +30,11 @@ CREATE TABLE courses (
 /*Data for the table `courses` */
 
 INSERT INTO courses (id, kurs, opis, created_at, updated_at) VALUES
-(22,'Engleski jezik A1', 'Osnovni nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00'),
-(33,'Italijanski jezik A1', 'Osnovni nivo italijanskog jezika', '2024-02-01 12:00:00', '2024-02-01 12:00:00'),
-(44,'Španski jezik', 'Osnovni nivo španskog jezika', '2024-03-01 12:00:00', '2024-03-01 12:00:00'),
-(55,'Engleski jezik B1', 'Srednji nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00'),
-(66,'Engleski jezik C1', 'Napredni nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00');
+(1,'Engleski jezik A1', 'Osnovni nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00'),
+(2,'Italijanski jezik A1', 'Osnovni nivo italijanskog jezika', '2024-02-01 12:00:00', '2024-02-01 12:00:00'),
+(3,'Španski jezik', 'Osnovni nivo španskog jezika', '2024-03-01 12:00:00', '2024-03-01 12:00:00'),
+(4,'Engleski jezik B1', 'Srednji nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00'),
+(5,'Engleski jezik C1', 'Napredni nivo engleskog jezika', '2024-01-01 12:00:00', '2024-01-01 12:00:00');
 
 
 /*Table structure for table `payments` */
@@ -53,11 +53,11 @@ CREATE TABLE payments (
 /*Data for the table `payments` */
 
 INSERT INTO payments (id, cena, user_id, created_at, updated_at, currency) VALUES
-(1,10000.00, 4, '2024-01-01 12:00:00', '2024-01-01 12:00:00', 'USD'),
-(2, 12000.00, 5, '2024-02-01 12:00:00', '2024-02-01 12:00:00', 'EUR'),
-(3, 15000.00, 6, '2024-03-01 12:00:00', '2024-03-01 12:00:00', 'GBP'),
-(4, 12500.00, 7, '2024-04-01 12:00:00', '2024-04-01 12:00:00', 'USD'),
-(5,13000.00, 8, '2024-05-01 12:00:00', '2024-05-01 12:00:00', 'EUR');
+(1,10000.00, 1, '2024-01-01 12:00:00', '2024-01-01 12:00:00', 'USD'),
+(2, 12000.00, 2, '2024-02-01 12:00:00', '2024-02-01 12:00:00', 'EUR'),
+(3, 15000.00, 3, '2024-03-01 12:00:00', '2024-03-01 12:00:00', 'GBP'),
+(4, 12500.00, 4, '2024-04-01 12:00:00', '2024-04-01 12:00:00', 'USD'),
+(5,13000.00, 5, '2024-05-01 12:00:00', '2024-05-01 12:00:00', 'EUR');
 
 
 
@@ -165,12 +165,11 @@ CREATE TABLE `users` (
 /*Data for the table `users` */
 
 INSERT INTO users (id, name, email, email_verified_at, password, remember_token, created_at, updated_at) VALUES
-(5, 'Ana Jovanović', 'ana.jovanovic@example.com', '2022-12-22 21:31:41', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'abc123', '2022-12-22 21:31:41', '2022-12-22 21:31:41'),
-(6, 'Marko Petrović', 'marko.petrovic@example.org', '2022-12-22 21:31:41', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'def456', '2022-12-22 21:31:41', '2022-12-22 21:31:41'),
-(7, 'Milica Nikolić', 'milica.nikolic@example.com', '2022-12-22 21:31:41', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'ghi789', '2022-12-22 21:31:41', '2022-12-22 21:31:41'),
-(8, 'Stefan Đorđević', 'stefan.djordjevic@gmail.com', NULL, '$2y$10$biauH3hOHQsT3KfLOqefgei8VHEaWNn87BZNA/xSyiHbh1YMEelqG', NULL, '2022-12-22 21:34:49', '2022-12-22 21:34:49'),
-(9, 'Jelena Stojanović', 'jelena.stojanovic@gmail.com', NULL, '$2y$10$2TF3LO3gIt/opIY89jrRZelqQJvQxzd1F7Ehbu0/bWZS.P/9b55Pq', NULL, '2022-12-22 22:38:35', '2022-12-22 22:38:35');
-(10, 'Jeleneeea Stojanović', 'jeeelena.stojanovic@gmail.com', NULL, '$2y$10$2TF3LO3gIt/opIY89jrRZelqQJvQxzd1F7Ehbu0/bWZS.P/9b55Pq', NULL, '2022-12-22 22:38:35', '2022-12-22 22:38:35');
+(1, 'Ana Jovanović', 'ana.jovanovic@example.com', '2022-12-22 21:31:41', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'abc123', '2022-12-22 21:31:41', '2022-12-22 21:31:41'),
+(2, 'Marko Petrović', 'marko.petrovic@example.org', '2022-12-22 21:31:41', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'def456', '2022-12-22 21:31:41', '2022-12-22 21:31:41'),
+(3, 'Milica Nikolić', 'milica.nikolic@example.com', '2022-12-22 21:31:41', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'ghi789', '2022-12-22 21:31:41', '2022-12-22 21:31:41'),
+(4, 'Stefan Đorđević', 'stefan.djordjevic@gmail.com', NULL, '$2y$10$biauH3hOHQsT3KfLOqefgei8VHEaWNn87BZNA/xSyiHbh1YMEelqG', NULL, '2022-12-22 21:34:49', '2022-12-22 21:34:49'),
+(5, 'Jelena Stojanović', 'jelena.stojanovic@gmail.com', NULL, '$2y$10$2TF3LO3gIt/opIY89jrRZelqQJvQxzd1F7Ehbu0/bWZS.P/9b55Pq', NULL, '2022-12-22 22:38:35', '2022-12-22 22:38:35');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

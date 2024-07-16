@@ -9,13 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-
-
-        public function up()
+    public function up(): void
     {
         Schema::dropIfExists('course_payment');
-    }
 
+    }
 
     /**
      * Reverse the migrations.

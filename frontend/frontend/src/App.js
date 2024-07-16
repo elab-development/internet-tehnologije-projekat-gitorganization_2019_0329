@@ -1,10 +1,10 @@
 import "./App.css";
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./home";
 import Tickets from "./tickets";
 import { useState } from "react";
 import NavBar from "./navBar";
+import LoginForm from "./home";
 import Card from "./cards";
 import Search from './Search'
 import RegisterForm from "./register";
@@ -13,7 +13,6 @@ import Images from "./imagesPacked";
 import OneCard from "./OneCard";
 import RegisterAdmin from "./registeradmin";
 
-import ForgotPassword from "./ZaboravljenaLozinka";
 
 
 function App() {
@@ -116,7 +115,6 @@ function App() {
 <Route path="/register" element={<RegisterForm />} />
 <Route path="/admin" element={<RegisterAdmin />} />
 <Route path="/cards" element={<Card />} />
-<Route path="/forgot-password" element={<ForgotPassword />} />
 <Route path="/Search" element={<Search details={tickets} />} />
       </Routes>
      </BrowserRouter>

@@ -9,12 +9,12 @@
     {
         public function show($id)
         {
-            $users = User::findOrFail($id);
-           // $payments = $users->payments()->with('courses')->get();
+            $user = User::findOrFail($id);
+            $payments = $user->payments()->with('courses')->get();
 
             return  response()->json([
-                'users' => $users,
-                //'payments' => $payments
+                'user' => $user,
+                'payments' => $payments
             ], 200);
         }
 

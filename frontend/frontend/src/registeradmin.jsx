@@ -2,44 +2,45 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
+import Tickets from "./tickets";
 
 const RegisterAdmin = () => {
-  const [userId, setUserId] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [id, setId] = useState("");
+  const [kurs, setKurs] = useState("");
+  const [opis, setOpis] = useState("");
   const navigate = useNavigate();
 
   const handleInsertUser = (e) => {
     e.preventDefault();
 
     const userData = {
-      userId,
-      firstName,
-      lastName,
+      id,
+      kurs,
+      opis,
     };
 
-    axios.post('/api/users', userData, {
+    axios.post('/api/courses', userData, {
       headers: {
         Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`
       }
     })
       .then(response => {
-        console.log('Korisnik uspešno dodat:', response.data);
+        console.log('Kurs uspesno dodat:', response.data);
       })
       .catch(error => {
-        console.error('Greška tokom dodavanja korisnika:', error);
+        console.error('Greška tokom dodavanja kursa:', error);
       });
   };
 
-  const handleUpdateUser = (e) => {
+  const handleUpdateCourse = (e) => {
     e.preventDefault();
 
     const userData = {
-      firstName,
-      lastName,
+      kurs,
+      opis,
     };
 
-    axios.put(`/api/users/${userId}`, userData, {
+    axios.put(`/api/courses/${id}`, userData, {
       headers: {
         Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`
       }
@@ -52,19 +53,19 @@ const RegisterAdmin = () => {
       });
   };
 
-  const handleDeleteUser = (e) => {
+  const handleDeleteCourse = (e) => {
     e.preventDefault();
 
-    axios.delete(`/api/users/${userId}`, {
+    axios.delete(`/api/courses/${id}`, {
       headers: {
         Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`
       }
     })
       .then(response => {
-        console.log('Korisnik uspešno obrisan:', response.data);
+        console.log('Kurs uspešno obrisan:', response.data);
       })
       .catch(error => {
-        console.error('Greška tokom brisanja korisnika:', error);
+        console.error('Greška tokom brisanja kursa:', error);
       });
   };
 
@@ -82,23 +83,23 @@ const RegisterAdmin = () => {
       <form onSubmit={handleInsertUser}>
         <div className="login-content">
           <div className="form-group">
-            <label htmlFor="userId">ID korisnika:</label>
+            <label htmlFor="id">ID korisnika:</label>
             <input
               type="text"
-              id="userId"
+              id="id"
               className="login-input"
-              value={userId}
-              onChange={(e) => setUserId(e.target.value)}
+              value={id}
+              onChange={(e) => setId(e.target.value)}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="firstName">Ime:</label>
+            <label htmlFor="Kurs">Ime:</label>
             <input
               type="text"
-              id="firstName"
+              id="kurs"
               className="login-input"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={kurs}
+              onChange={(e) => setKurs(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -107,19 +108,19 @@ const RegisterAdmin = () => {
               type="text"
               id="lastName"
               className="login-input"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={opis}
+              onChange={(e) => setOpis(e.target.value)}
             />
           </div>
           <div className="button-container">
             <button type="submit" className="login-button">
-              Dodaj Korisnika
+              Dodaj Kurs
             </button>
-            <button type="button" className="signin-button" onClick={handleUpdateUser}>
-              Ažuriraj Korisnika
+            <button type="button" className="signin-button" onClick={handleUpdateCourse}>
+              Ažuriraj Kurs
             </button>
-            <button type="button" className="signin-button" onClick={handleDeleteUser}>
-              Obriši Korisnika
+            <button type="button" className="signin-button" onClick={handleDeleteCourse}>
+              Obriši Kurs
             </button>
             <button type="button" className="signin-button" onClick={handleLogout}>
               Logout
