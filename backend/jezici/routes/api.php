@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth:sanctum','role:admin', 'adminLoggedIn']], f
     Route::post('/courses/insert', [CourseController::class,'insert']);
 
     Route::post('/admin/logout', [AuthController::class, 'logout']);
+    //
 });
 
 

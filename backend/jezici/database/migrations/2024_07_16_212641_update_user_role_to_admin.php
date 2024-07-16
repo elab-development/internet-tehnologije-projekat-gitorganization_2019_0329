@@ -34,7 +34,7 @@ class UpdateUserRoleToAdmin extends Migration
      */
     public function down()
     {
-        //ko
+
         // Vraćanje role korisnika sa ID-jem 12 na 'user' ako je potrebno
         DB::table('users')
             ->where('id', 12)
