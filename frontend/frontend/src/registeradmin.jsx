@@ -10,7 +10,7 @@ const RegisterAdmin = () => {
   const [opis, setOpis] = useState("");
   const navigate = useNavigate();
 
-  const handleInsertUser = (e) => {
+  const handleInsertCourse = (e) => {
     e.preventDefault();
 
     const userData = {
@@ -80,7 +80,7 @@ const RegisterAdmin = () => {
       <h2 className="login-title">Registruj korisnika</h2>
 =======
       <h2 className="login-title">Upravljanje Korisnicima</h2>
-      <form onSubmit={handleInsertUser}>
+      <form onSubmit={handleInsertCourse}>
         <div className="login-content">
           <div className="form-group">
             <label htmlFor="id">ID korisnika:</label>
