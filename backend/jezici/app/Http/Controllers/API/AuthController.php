@@ -37,7 +37,7 @@ class AuthController extends Controller
 
         return response()->json(['token' => $token], 201);
     }
-/*
+    /*
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -53,62 +53,56 @@ class AuthController extends Controller
 }
 */
 
-public function login(Request $request)
-{
-    $request->validate([
-        'email' => 'required|string|email',
-        'password' => 'required|string',
-    ]);
-  /*  if(!Auth::attempt($request->only('email','password'))){
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+        /*  if(!Auth::attempt($request->only('email','password'))){
         return response()->json(['message'=>'Unauthorized'], 401);
   */
-    $user = User::where('email', $request->input('email')) -> firstOrFail();
-    $csrfToken = Crypt::encrypt(csrf_token());
-    if($user->role!='admin'){
-    DB::statement("UPDATE users SET role='loggedIn' WHERE id=$user->id");
+        $user = User::where('email', $request->input('email'))->firstOrFail();
+        $csrfToken = Crypt::encrypt(csrf_token());
+        if ($user->role != 'admin') {
+            DB::statement("UPDATE users SET role='loggedIn' WHERE id=$user->id");
+        }
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Hello, Team: ' . $user->name . ' welcome! Have a nice day!',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'csrf_token' => $csrfToken,
+            'role' => $user->role
+        ]);
     }
 
-    $token = $user->createToken('auth_token')->plainTextToken;
 
-    return response()->json([
-        'success'=>true,
-        'message' => 'Hello, Team: ' . $user->name . ' welcome! Have a nice day!',
-        'access_token' => $token,
-        'token_type' => 'Bearer',
-        'csrf_token' => $csrfToken,
-        'role'=>$user->role
-    ]);
+    public function forgotPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required|string|min:8'
+        ]);
+        $user = User::where('email', $request->email)->firstOrFail();
+        if ([$request->email, '=', $user->email]) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+        return response()->json($user);
+    }
+
+    public function logout(Request $request)
+    {
+        $id = Auth::id();
+        $user = Auth::user();
+        if ($user->role !== 'admin') {
+            DB::statement("UPDATE users SET role='loggedOut' WHERE id=$id");
+        }
+        $request->user()->tokens()->delete();
+        return response()->json(['message' => 'Successfully logged out!']);
+    }
 }
-
-
-public function forgotPassword(Request $request)
-{
-     $request->validate([
-       'email' => 'required',
-       'password' => 'required|string|min:8'
-     ]);
-     $user = User::where('email', $request->email) -> firstOrFail();
-     if([$request->email,'=', $user->email]) {
-         $user->password=Hash::make($request->password);
-         $user->save();
-     }
-     return response()->json($user);
-}
-
-public function logout(Request $request)
- {
-     $id=Auth::id();
-     $user = Auth::user();
-     if ($user->role !== 'admin') {
-      DB::statement("UPDATE users SET role='loggedOut' WHERE id=$id");
-     }
-    $request->user()->tokens()->delete();
-    return response()->json(['message'=> 'Successfully logged out!']);
- }
-
-}
-
-
-
-
-

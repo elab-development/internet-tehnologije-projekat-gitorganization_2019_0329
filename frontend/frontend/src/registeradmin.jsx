@@ -46,10 +46,10 @@ const RegisterAdmin = () => {
       }
     })
       .then(response => {
-        console.log('Korisnik uspešno ažuriran:', response.data);
+        console.log('Kurs uspešno ažuriran:', response.data);
       })
       .catch(error => {
-        console.error('Greška tokom ažuriranja korisnika:', error);
+        console.error('Greška tokom ažuriranja kursa:', error);
       });
   };
 
@@ -77,13 +77,11 @@ const RegisterAdmin = () => {
 
   return (
     <div className="login-container">
-      <h2 className="login-title">Registruj korisnika</h2>
-=======
-      <h2 className="login-title">Upravljanje Korisnicima</h2>
+      <h2 className="login-title">UPRAVLJANJE KURSEVIMA</h2>
       <form onSubmit={handleInsertCourse}>
         <div className="login-content">
           <div className="form-group">
-            <label htmlFor="id">ID korisnika:</label>
+            <label htmlFor="id">ID KURSA:</label>
             <input
               type="text"
               id="id"
@@ -93,7 +91,7 @@ const RegisterAdmin = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Kurs">Ime:</label>
+            <label htmlFor="Kurs">KURS:</label>
             <input
               type="text"
               id="kurs"
@@ -103,7 +101,7 @@ const RegisterAdmin = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="lastName">Prezime:</label>
+            <label htmlFor="lastName">OPIS:</label>
             <input
               type="text"
               id="lastName"
