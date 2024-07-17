@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Oswald', sans-serif;
+  }
+  .navBar{
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #5EBABC;
+    clip-path: circle(60px at calc(100% - 45px) 45px);
+    transition: all 0.3s ease-in-out;
+  }
+  #active:checked ~ .navBar{
+    clip-path: circle(50%);
+    color: #ff00e0;
+  }
+  .menu-btn{
+    
+    position: absolute;
+    z-index: 150;
+    right: 20px;
+    top: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #5EBABC;
+    cursor: pointer;
+    background: #EF6D3D;
+    transition: all 0.3s ease-in-out;
+  }
+  #active:checked ~ .menu-btn{
+    color: rgb(180, 51, 51);
+  }
+  #active:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+  .navBar ul{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
+  .navBar ul li{
+    margin: 15px 0;
+  }
+  .navBar ul li a{
+    color: none;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px 30px;
+    color: #125256;
+    border-radius: 50px;
+    background: #EF6D3D;
+    position: relative;
+    line-height: 50px;
+    transition: all 0.3s ease;
+  }
+  .navBar ul li a:after{
+    position: absolute;
+    content: "";
+    background: #c71313;
+     background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+    width: 104%;
+    height: 110%;
+    left: -2%;
+    top: -5%; 
+    border-radius: 50px;
+    transform: scaleY(0);
+    z-index: -1;
+    animation: rotate 1.5s linear infinite;
+    transition: transform 0.3s ease;
+  }
+  .navBar ul li a:hover:after{
+    transform: scaleY(1);
+  }
+  .navBar ul li a:hover{
+    color: #fff;
+  }
+  input[type="checkbox"]{
+    display: none;
+  }
+  
+  @keyframes rotate {
+    0%{
+      filter: hue-rotate(0deg);
+    }
+    100%{
+      filter: hue-rotate(360deg);
+    }
+  }
